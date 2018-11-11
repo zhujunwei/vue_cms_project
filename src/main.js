@@ -8,9 +8,15 @@ Vue.config.productionTip = false
 import Mint from 'mint-ui';
 Vue.use(Mint);
 
+//图片查看器
+import VuePreview from 'vue-preview'
+
+// defalut install
+Vue.use(VuePreview)
+
 //配置公共api
-// Axios.defaults.baseURL = "http://www.sinya.online/api/";
-Axios.defaults.baseURL = "http://localhost:8899/api/";
+Axios.defaults.baseURL = "http://www.sinya.online/api/";
+// Axios.defaults.baseURL = "http://localhost:8899/api/";
 
 //挂载axios
 Vue.prototype.$axios = Axios;
@@ -19,6 +25,9 @@ Vue.prototype.$axios = Axios;
 import "mint-ui/lib/style.css";
 import "../static/global.css";
 import moment from "moment";
+import Comment from "./components/Common/Comment.vue";
+Vue.component('comment', Comment);
+
 
 //自定义日期过滤器，可自定义格式类型
 Vue.filter("formatDateYMD", function(value, formatStr="YYYY-MM-DD"){

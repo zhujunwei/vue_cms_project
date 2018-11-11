@@ -9,8 +9,12 @@
     </div>
     <div class="grid">
       <ul>
-        <li v-for="item in grids" :key="item.id">
-          <router-link :to="{path: item.path}">
+        <li v-for="(item, index) in grids" :key="item.id">
+          <router-link :to="{path: item.path}" 
+            exact 
+            @click.native="handleTab(index)"
+            :class='{"link-active": index == currentIndex}'  
+          >
             <img :src="item.src" alt=""/>
             <p>{{item.title}}</p>
           </router-link>
@@ -31,7 +35,7 @@ import src6 from '../../assets/联系我们.png'
 var grids = [
   {id:1, src: src1, title: "新闻资讯", path: "/newslist"},
   {id:2, src: src2, title: "图文分享", path: "/photos/list/0"},
-  {id:3, src: src3, title: "商品展示", path: "newslist"},
+  {id:3, src: src3, title: "商品展示", path: "/goods/list"},
   {id:4, src: src4, title: "资讯", path: "newslist"},
   {id:5, src: src5, title: "留言反馈", path: "newslist"},
   {id:6, src: src6, title: "联系我们", path: "newslist"}
@@ -43,7 +47,13 @@ export default {
     return {
       name: "",
       swiperList: [],
-      grids: grids
+      grids: grids,
+      currentIndex: 0
+    }
+  },
+  methods: {
+    handleTab(index){
+      this.currentIndex = index;
     }
   },
   created(){

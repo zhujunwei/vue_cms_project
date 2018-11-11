@@ -8,11 +8,13 @@ import NewsList from '@/components/News/NewsList'
 import NewsDetail from '@/components/News/NewsDetail'
 import PhotoList from '@/components/Photo/PhotoList';
 import PhotoDetail from '@/components/Photo/PhotoDetail';
+import GoodList from '@/components/Goods/GoodsList';
 
 //挂载vue-router
 Vue.use(Router)
 
 export default new Router({
+  linkActiveClass: 'link-active',
   routes: [
     {
       path: '/',
@@ -68,6 +70,22 @@ export default new Router({
       component: PhotoList,
       meta: {
         title: '图片分享列表'
+      }
+    },
+    {
+      path: '/photos/detail/:id',
+      name: 'photoDetail',
+      component: PhotoDetail,
+      meta: {
+        title: '图片详情'
+      }
+    },
+    {
+      path: '/goods/list',
+      name: 'goodsList',
+      component: GoodList,
+      meta: {
+        title: '商品列表'
       }
     }
   ]
